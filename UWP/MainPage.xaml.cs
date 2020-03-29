@@ -29,11 +29,16 @@ namespace UWP
         public MainPage()
         {
             this.InitializeComponent();
-            this.ViewModel = new DataStoreViewModel();
+            this.ViewModel = new DataStore();
 
         }
+        public DataStore ViewModel { get; set; }
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.LifeHistory = "clear";
+        }
 
-        public DataStoreViewModel ViewModel { get; set; }
+
 
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -46,11 +51,17 @@ namespace UWP
 
         }
     }
+}
 
+namespace UWP
+{
     public class DataStore : INotifyPropertyChanged
+
     {
-       /* Windows.Storage.ApplicationDataCompositeValue composite = new Windows.Storage.ApplicationDataCompositeValue();
-        Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;*/
+
+      
+        /* Windows.Storage.ApplicationDataCompositeValue composite = new Windows.Storage.ApplicationDataCompositeValue();
+         Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;*/
 
         private string lifeHistory;
 
@@ -75,6 +86,8 @@ namespace UWP
                 {
                     this.lifeHistory += "4";
                 }
+                if (value.CompareTo("clear") == 0)
+                    this.lifeHistory = "";
                 StoreLocalSettings();
                 this.OnPropertyChanged();
 
@@ -86,8 +99,8 @@ namespace UWP
         public DataStore()
         {
 
-            fname = "UWP";
-            lname = "User";
+            fname = "Piotrek";
+            lname = "Amroz";
             lifeHistory = "";
 
             localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
@@ -158,12 +171,7 @@ namespace UWP
             }
 
         }
-        public class DataStoreViewModel
-        {        
-
-            private DataStore defaultDataStore = new DataStore();
-            public DataStore DefaultDataStore { get { return this.defaultDataStore; } }
-        }
+        
     }
 }
 

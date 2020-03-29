@@ -11,17 +11,17 @@
     <StackPanel  >
         <TextBlock HorizontalAlignment="Left" Text='Imie' TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged" FontSize="18" />
         <Border  Margin="0,18,0,0" >
-            <TextBox x:Name="firstNameInput" Text='{x:Bind ViewModel.DefaultDataStore.FName, Mode=TwoWay}' TextWrapping="Wrap"  TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="247"/>
+            <TextBox x:Name="firstNameInput" Text='{x:Bind ViewModel.FName, Mode=TwoWay}' TextWrapping="Wrap"  TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="247"/>
         </Border>
         <TextBlock HorizontalAlignment="Left"  Text="Nazwisko" TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged" FontSize="18"/>
         <Border BorderThickness="1" BorderBrush="Black" Margin="0,60,0,0">
-            <TextBox x:Name="secondNameInput" Text='{x:Bind ViewModel.DefaultDataStore.FName, Mode=TwoWay}' TextWrapping="Wrap"  TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="247"/>
+            <TextBox x:Name="secondNameInput" Text='{x:Bind ViewModel.LName, Mode=TwoWay}' TextWrapping="Wrap"  TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="247"/>
 
         </Border>
 
-        <TextBlock HorizontalAlignment="Left"   Text='{x:Bind ViewModel.DefaultDataStore.Summary, Mode=TwoWay}' TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged" FontSize="18"/>
-        <TextBlock HorizontalAlignment="Left"   Text='{x:Bind ViewModel.DefaultDataStore.LifeHistory, Mode=TwoWay}' TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged" FontSize="18"/>
-        <Button Content="Clear life history"/>
+        <TextBlock HorizontalAlignment="Left"   Text='{x:Bind ViewModel.Summary, Mode=TwoWay}' TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left"   Text='{x:Bind ViewModel.LifeHistory, Mode=TwoWay}' TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged" FontSize="18"/>
+        <Button Content="Clear life history" Click="button_Click"/>
 
         <TextBlock HorizontalAlignment="Left"   Text='1-lunched, 2-restored, 3-suspended, 4-resumed' TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged" FontSize="18"/>
 

@@ -31,8 +31,10 @@ namespace UWP
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            Application.Current.Resuming += new EventHandler<Object>(App_Resuming);
+            this.ViewModel = new DataStore();
         }
-
+        public DataStore ViewModel { get; set; }
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used such as when the application is launched to open a specific file.
@@ -56,7 +58,8 @@ namespace UWP
                     //TODO: Load state from previously suspended application
                     ViewModel.LifeHistory = "restored";
                 }
-                else
+                
+                else ViewModel.LifeHistory = "launched";
 
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
@@ -97,7 +100,13 @@ namespace UWP
         {
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
+            ViewModel.LifeHistory = "suspended";
             deferral.Complete();
+        }
+
+        private void App_Resuming(Object sender, Object e)
+        {
+            ViewModel.LifeHistory = "resumed";
         }
     }
 }

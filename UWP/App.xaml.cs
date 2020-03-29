@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+
 namespace UWP
 {
     /// <summary>
@@ -53,7 +54,9 @@ namespace UWP
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     //TODO: Load state from previously suspended application
+                    ViewModel.LifeHistory = "restored";
                 }
+                else
 
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;

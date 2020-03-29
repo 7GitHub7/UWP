@@ -12,7 +12,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-/*using static UWP.DataStore;*/
+using static UWP.DataStore;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -26,14 +28,14 @@ namespace UWP
         public MainPage()
         {
             this.InitializeComponent();
-           /* this.ViewModel = new DataStoreViewModel();*/
+            this.ViewModel = new DataStoreViewModel();
 
         }
 
-        /*public DataStoreViewModel ViewModel { get; set; }*/
-    
+        public DataStoreViewModel ViewModel { get; set; }
 
-    private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
@@ -45,14 +47,26 @@ namespace UWP
     }
 }
 
-/*namespace UWP
+namespace UWP
 {
-    public class DataStore
+    public class DataStore : INotifyPropertyChanged
     {
-        
+      
 
-        private string fname = "PIOTR";
-        private string Summary;
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+
+        private string fname ;
+        public string Summary {
+            get{ return $"Witaj, {this.FName}  {this.LName}"; }
+            set{ this.OnPropertyChanged(); }
+        }
+        
+        public void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            // Raise the PropertyChanged event, passing the name of the property whose value has changed.
+            //
+            this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         public string FName
         {
@@ -64,6 +78,9 @@ namespace UWP
             }
         }
         private string lname;
+
+        
+
         public string LName
         {
             get { return this.lname; }
@@ -82,33 +99,5 @@ namespace UWP
             public DataStore DefaultDataStore { get { return this.defaultDataStore; } }
         }
     }
-}*/
+}
 
-/*namespace Quickstart
-{
-    public class Recording
-    {
-        public string ArtistName { get; set; }
-        public string CompositionName { get; set; }
-        public DateTime ReleaseDateTime { get; set; }
-        public Recording()
-        {
-            this.ArtistName = "Wolfgang Amadeus Mozart";
-            this.CompositionName = "Andante in C for Piano";
-            this.ReleaseDateTime = new DateTime(1761, 1, 1);
-        }
-        public string OneLineSummary
-        {
-            get
-            {
-                return $"{this.CompositionName} by {this.ArtistName}, released: "
-                    + this.ReleaseDateTime.ToString("d");
-            }
-        }
-    }
-    public class RecordingViewModel
-    {
-        private Recording defaultRecording = new Recording();
-        public Recording DefaultRecording { get { return this.defaultRecording; } }
-    }
-}*/

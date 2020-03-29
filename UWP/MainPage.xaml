@@ -9,17 +9,20 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel  >
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged" FontSize="18" Text='imie'/>
+        <TextBlock HorizontalAlignment="Left" Text='Imie' TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged" FontSize="18" />
         <Border BorderThickness="1" BorderBrush="Black" Margin="0,18,0,0" >
-            <TextBox x:Name="firstNameInput" Text="Imie" TextWrapping="Wrap"  TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="247"/>
+            <TextBox x:Name="firstNameInput" Text='{x:Bind ViewModel.DefaultDataStore.FName, Mode=TwoWay}' TextWrapping="Wrap"  TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="247"/>
         </Border>
-        <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged" FontSize="18" Text="nazwisko"/>
+        <TextBlock HorizontalAlignment="Left"  Text="Nazwisko" TextWrapping="Wrap" VerticalAlignment="Top" SelectionChanged="TextBlock_SelectionChanged" FontSize="18"/>
         <Border BorderThickness="1" BorderBrush="Black" Margin="0,60,0,0">
-            <TextBox x:Name="secondNameInput" Text="Nazwisko" TextWrapping="Wrap"  TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="247"/>
+            <TextBox x:Name="secondNameInput" Text='{x:Bind ViewModel.DefaultDataStore.FName, Mode=TwoWay}' TextWrapping="Wrap"  TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="247"/>
 
         </Border>
 
+        <Border BorderThickness="1" BorderBrush="Black" Margin="0,60,0,0">
+            <TextBox x:Name="Summary" Text='{x:Bind ViewModel.DefaultDataStore.Summary, Mode=TwoWay}' TextWrapping="Wrap"  TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="247"/>
 
+        </Border>
 
 
     </StackPanel>
